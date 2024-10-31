@@ -1,0 +1,114 @@
+[gd_scene load_steps=4 format=3 uid="uid://rn7ol5kkv2l"]
+
+[ext_resource type="PackedScene" path="res://examples/scenes/detailed_scene_base.tscn" id="1"]
+[ext_resource type="Script" path="res://examples/scenes/storage.gd" id="2"]
+[ext_resource type="FontFile" path="res://examples/fonts/default_font.tres" id="3"]
+
+[node name="Storage" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="MarginContainer" parent="." index="0"]
+anchors_preset = 10
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="BackButton" parent="MarginContainer/HBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="." index="1"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 90.0
+offset_right = -20.0
+offset_bottom = 520.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="DefaultStorageType" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Default Storage Type:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="IsLocalStorageSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Is Local Storage Supported:"
+
+[node name="IsLocalStorageAvailable" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Is Local Storage Available:"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="IsPlatformInternalSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer4" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Is Platform Internal Supported:"
+
+[node name="IsPlatformInternalAvailable" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer4" index="1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Is Platform Internal Available:"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="CoinsInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="0"]
+custom_minimum_size = Vector2(130, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+placeholder_text = "Coins count"
+
+[node name="LevelIdInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="1"]
+custom_minimum_size = Vector2(130, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+placeholder_text = "Level id"
+
+[node name="TutorialCheckbox" type="CheckBox" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Is Tutorial Completed"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="4"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LoadDataButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer3" index="0"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Load Data"
+
+[node name="SaveDataButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer3" index="1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Save Data"
+
+[node name="DeleteDataButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer3" index="2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Delete Data"
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer3/LoadDataButton" to="." method="_on_load_data_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer3/SaveDataButton" to="." method="_on_save_data_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer3/DeleteDataButton" to="." method="_on_delete_data_button_pressed"]
