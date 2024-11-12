@@ -2,12 +2,16 @@ extends DetailedSceneBase
 
 
 @onready var is_payments_supported_label = $MarginContainer2/VBoxContainer/IsPaymentsSupported
-@onready var is_catalog_supported_label = $MarginContainer2/VBoxContainer/IsCatalogSupported
+@onready var is_get_catalog_supported_label = $MarginContainer2/VBoxContainer/IsGetCatalogSupported
+@onready var is_get_purchases_supported_label = $MarginContainer2/VBoxContainer/IsGetPurchasesSupported
+@onready var is_consume_purchase_supported_label = $MarginContainer2/VBoxContainer/IsConsumePurchaseSupported
 
 
 func _ready():
 	is_payments_supported_label.text = "Is Payments Supported: " + str(Bridge.payments.is_supported)
-	is_catalog_supported_label.text = "Is Catalog Supported: " + str(Bridge.payments.is_catalog_supported)
+	is_get_catalog_supported_label.text = "Is Get Catalog Supported: " + str(Bridge.payments.is_get_catalog_supported)
+	is_get_purchases_supported_label.text = "Is Get Purchases Supported: " + str(Bridge.payments.is_get_purchases_supported)
+	is_consume_purchase_supported_label.text = "Is Consume Purchase Supported: " + str(Bridge.payments.is_consume_purchase_supported)
 
 
 func _on_purchase_button_pressed():
