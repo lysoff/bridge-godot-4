@@ -11,7 +11,6 @@ config_version=5
 [addons]
 
 playgama_bridge/general/game_distribution_game_id=""
-playgama_bridge/general/vk_play_game_id=""
 playgama_bridge/general/y8_game_id=""
 playgama_bridge/general/y8_host_id=""
 playgama_bridge/general/y8_adsense_id=""
