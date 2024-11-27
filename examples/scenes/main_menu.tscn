@@ -84,6 +84,12 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2")
 text = "Payments"
 
+[node name="AchievementsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+text = "Achievements"
+
 [node name="RemoteConfig" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(180, 50)
 layout_mode = 2
@@ -99,4 +105,5 @@ text = "Remote Config"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SocialButton" to="." method="_on_social_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PaymentsButton" to="." method="_on_payments_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/AchievementsButton" to="." method="_on_achievements_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RemoteConfig" to="." method="_on_remote_config_button_pressed"]
