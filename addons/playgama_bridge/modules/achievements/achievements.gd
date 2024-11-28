@@ -15,7 +15,7 @@
 
 var is_supported : get = _is_supported_getter
 var is_get_list_supported : get = _is_get_list_supported_getter
-var is_show_native_popup_supported : get = _is_show_native_popup_supported_getter
+var is_native_popup_supported : get = _is_native_popup_supported_getter
 
 func _is_supported_getter():
 	return _js_achievements.isSupported
@@ -23,8 +23,8 @@ func _is_supported_getter():
 func _is_get_list_supported_getter():
 	return _js_achievements.isGetListSupported
 
-func _is_show_native_popup_supported_getter():
-	return _js_achievements.isShowNativePopupSupported
+func _is_native_popup_supported_getter():
+	return _js_achievements.isNativePopupSupported
 	
 var _js_achievements = null
 var _unlock_callback = null
@@ -106,7 +106,7 @@ func _on_js_get_list_catch(args):
 
 func _on_js_show_native_popup_then(args):
 	if _show_native_popup_callback != null:
-    _show_native_popup_callback.call(true)
+		_show_native_popup_callback.call(true)
 		_show_native_popup_callback = null
 
 func _on_js_show_native_popup_catch(args):
