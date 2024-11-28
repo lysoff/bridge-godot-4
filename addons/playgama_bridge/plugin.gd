@@ -8,6 +8,7 @@ const SETTINGS_PATH = "addons/playgama_bridge/general/"
 const SETTINGS_GAME_DISTRIBUTION_GAME_ID_KEY = "game_distribution_game_id"
 const SETTINGS_Y8_GAME_ID_KEY = "y8_game_id"
 const SETTINGS_Y8_HOST_ID_KEY = "y8_host_id"
+const SETTINGS_Y8_CHANNEL_ID_KEY = "y8_channel_id"
 const SETTINGS_Y8_ADSENSE_ID_KEY = "y8_adsense_id"
 const SETTINGS_LAGGED_DEV_ID_KEY = "lagged_dev_id"
 const SETTINGS_LAGGED_PUBLISHER_ID_KEY = "lagged_publisher_id"
@@ -18,6 +19,7 @@ func _enter_tree():
 	_add_project_settings(SETTINGS_PATH + SETTINGS_GAME_DISTRIBUTION_GAME_ID_KEY, TYPE_STRING, "")
 	_add_project_settings(SETTINGS_PATH + SETTINGS_Y8_GAME_ID_KEY, TYPE_STRING, "")
 	_add_project_settings(SETTINGS_PATH + SETTINGS_Y8_HOST_ID_KEY, TYPE_STRING, "")
+	_add_project_settings(SETTINGS_PATH + SETTINGS_Y8_CHANNEL_ID_KEY, TYPE_STRING, "")
 	_add_project_settings(SETTINGS_PATH + SETTINGS_Y8_ADSENSE_ID_KEY, TYPE_STRING, "")
 	_add_project_settings(SETTINGS_PATH + SETTINGS_LAGGED_DEV_ID_KEY, TYPE_STRING, "")
 	_add_project_settings(SETTINGS_PATH + SETTINGS_LAGGED_PUBLISHER_ID_KEY, TYPE_STRING, "")
