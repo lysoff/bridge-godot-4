@@ -7,7 +7,7 @@ const JS_SDK_PATH = "res://addons/playgama_bridge/template/" + JS_SDK_FILE_NAME
 const SETTINGS_PATH = "addons/playgama_bridge/general/"
 const SETTINGS_GAME_DISTRIBUTION_GAME_ID_KEY = "game_distribution_game_id"
 const SETTINGS_Y8_GAME_ID_KEY = "y8_game_id"
-const SETTINGS_Y8_HOST_ID_KEY = "y8_host_id"
+const SETTINGS_Y8_CHANNEL_ID_KEY = "y8_channel_id"
 const SETTINGS_Y8_ADSENSE_ID_KEY = "y8_adsense_id"
 const SETTINGS_LAGGED_DEV_ID_KEY = "lagged_dev_id"
 const SETTINGS_LAGGED_PUBLISHER_ID_KEY = "lagged_publisher_id"
@@ -37,7 +37,7 @@ func _export_end():
 	
 	var game_distribution_game_id = ""
 	var y8_game_id = ""
-	var y8_host_id = ""
+	var y8_channel_id = ""
 	var y8_adsense_id = ""
 	var lagged_dev_id = ""
 	var lagged_publisher_id = ""
@@ -50,8 +50,8 @@ func _export_end():
 	if ProjectSettings.has_setting(SETTINGS_PATH + SETTINGS_Y8_GAME_ID_KEY):
 		y8_game_id = ProjectSettings.get(SETTINGS_PATH + SETTINGS_Y8_GAME_ID_KEY)
 	
-	if ProjectSettings.has_setting(SETTINGS_PATH + SETTINGS_Y8_HOST_ID_KEY):
-		y8_host_id = ProjectSettings.get(SETTINGS_PATH + SETTINGS_Y8_HOST_ID_KEY)
+	if ProjectSettings.has_setting(SETTINGS_PATH + SETTINGS_Y8_CHANNEL_ID_KEY):
+		y8_channel_id = ProjectSettings.get(SETTINGS_PATH + SETTINGS_Y8_CHANNEL_ID_KEY)
 
 	if ProjectSettings.has_setting(SETTINGS_PATH + SETTINGS_Y8_ADSENSE_ID_KEY):
 		y8_adsense_id = ProjectSettings.get(SETTINGS_PATH + SETTINGS_Y8_ADSENSE_ID_KEY)
@@ -75,7 +75,7 @@ func _export_end():
 	var content = index.get_as_text()
 	content = content.format({"game_distribution_game_id":game_distribution_game_id})
 	content = content.format({"y8_game_id":y8_game_id})
-	content = content.format({"y8_host_id":y8_host_id})
+	content = content.format({"y8_channel_id":y8_channel_id})
 	content = content.format({"y8_adsense_id":y8_adsense_id})
 	content = content.format({"lagged_dev_id":lagged_dev_id})
 	content = content.format({"lagged_publisher_id":lagged_publisher_id})
