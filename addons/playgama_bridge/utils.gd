@@ -31,3 +31,15 @@ func convert_to_js(data):
 			return data
 	
 	return null
+
+func convert_to_gd_object(js_data):
+	if typeof(js_data) != TYPE_OBJECT:
+		return null
+	
+	var js_item_keys = JavaScriptBridge.get_interface("Object").keys(js_data)
+	var item = {}
+	for j in range(js_item_keys.length):
+		var key = js_item_keys[j]
+		item[key] = js_data[key]
+
+	return item
