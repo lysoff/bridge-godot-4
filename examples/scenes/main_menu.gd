@@ -27,5 +27,8 @@ func _on_leaderboard_button_pressed():
 func _on_payments_button_pressed():
 	get_tree().change_scene_to_file("res://examples/scenes/payments.tscn")
 
+func _on_achievements_button_pressed():
+	get_tree().change_scene_to_file("res://examples/scenes/achievements.tscn")
+
 func _on_remote_config_button_pressed():
 	get_tree().change_scene_to_file("res://examples/scenes/remote_config.tscn")
