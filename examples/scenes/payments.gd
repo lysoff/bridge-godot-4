@@ -25,8 +25,17 @@ func _on_purchase_button_pressed():
 	
 	Bridge.payments.purchase(options, Callable(self, "_on_purchase_completed"))
 	
-func _on_purchase_completed(success):
+func _on_purchase_completed(success, purchase):
 	print(success)
+	
+	if purchase != null:
+		match Bridge.platform.id:
+			"yandex":
+				print("Product ID: " + str(purchase.productID))
+				print("Purchase Token: " + str(purchase.purchaseToken))
+			"facebook":
+				print("Product ID: " + str(purchase.productID))
+				print("Purchase Token: " + str(purchase.purchaseToken))
 
 
 func _on_consume_button_pressed():
