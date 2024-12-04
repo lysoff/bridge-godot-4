@@ -16,10 +16,10 @@ func unlock(options = null, callback = null):
 	if callback != null:
 		callback.call(false)
 
-func get_list(callback = null):
+func get_list(options = null, callback = null):
 	if callback != null:
 		callback.call(false, [])
 
-func show_native_popup(callback = null):
+func show_native_popup(options = null, callback = null):
 	if callback != null:
-		callback.call(false, [])
+		callback.call(false)
