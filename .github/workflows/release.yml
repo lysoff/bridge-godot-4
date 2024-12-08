@@ -1,0 +1,74 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+    inputs:
+        tag_name:
+          description: 'Version tag v*'
+          required: true
+          type: string
+        release_name: 
+          description: 'Release name'
+          required: true
+          type: string
+        summary:
+          description: 'Release summary'
+          required: true
+          type: string
+
+jobs:
+  build:
+    permissions: write-all
+    name: Create release
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      # Checkout bridge by version
+      - name: Checkout bridge by version
+        uses: actions/checkout@v4
+        with:
+          repository: lysoff/bridge
+          ref: ${{ inputs.tag_name }}
+          path: bridge/
+          token: ${{ secrets.TRIGGER_REPO_TOKEN }}
+
+      # Build bridge
+      - name: Build bridge
+        run: | 
+          cd ./bridge
+          npm i 
+          npm run build
+          data=$(sed -n '2p' "dist/playgama-bridge.js")
+          echo "$data" > "dist/playgama-bridge.js"
+          cd ..
+
+      # Inject script
+      - name: Inject script
+        run: |
+          sed -i '/<!-- #cdn -->/,/<!-- #endcdn -->/c\<script src="./playgama-bridge.js"></script>' addons/playgama_bridge/template/index.html 
+          mv bridge/dist/playgama-bridge.js addons/playgama_bridge/template/playgama-bridge.js
+          rm -rf bridge
+
+      - name: Zip files
+        run: zip -r playgama_bridge_${{inputs.tag_name}}.zip ./*
+
+     # Upload
+      - name: Upload artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: playgama-bridge
+          path: playgama_bridge_${{inputs.tag_name}}.zip
+          
+      # Release
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.tag_name }}
+          name: ${{ inputs.release_name }}
+          body: ${{inputs.summary}}
+          files: playgama_bridge_${{inputs.tag_name}}.zip
