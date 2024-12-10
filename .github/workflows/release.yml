@@ -55,7 +55,7 @@ jobs:
           rm -rf bridge
 
       - name: Zip files
-        run: zip -r playgama_bridge_${{inputs.tag_name}}.zip ./*
+        run: zip -r playgama_bridge_${{inputs.tag_name}}.zip ./addons/playgama_bridge
 
      # Upload
       - name: Upload artefact
